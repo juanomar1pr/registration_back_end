@@ -28,13 +28,14 @@ var session;
 app.get("/logout", (req, res) => {
   req.session.destroy(err => {
     res.redirect("/")
+    console.log( session.userid,"ha cerrado la session")
   })
 })
 app.post('/insert', function(req, res) {
   req.session.usuario = req.body.myusername
-//Astericos tu info de mongo 
+
   const client = new MongoClient(url, { useUnifiedTopology: true });
-  const collection = client.db("*******").collection("*******");
+  const collection = client.db("basededatos").collection("usuarios");
   collection.insertOne({
    nombre: req.body.nombre, 
     apellido: req.body.apellido,
@@ -69,7 +70,7 @@ console.log(`Gracias ! solicitud enviada por: "${valor}  ${valor2}"`)
 function logiadoono(req, res, next){if(req.body.username == myusername && req.body.password == mypassword){
         session=req.session;
         session.userid=req.body.username;
-        console.log(req.session)
+        console.log(req.session.userid)
         res.send(`<h1>welcome ${myusername}<br>Hey there, </h1><br>
             <div id="privilegios"> <h1>OK </h1>
 
@@ -142,9 +143,9 @@ app.get('/user',(req,res) => {
             <a href=\'/logout'>click to logout</a>`)
  }else{res.redirect('/')}})
   
-//Astericos tu info de mongo 
+//Astericos
 
-const url = 'mongodb+srv://*******:*******@cluster0.miims2z.mongodb.net/?retryWrites=true&w=majority';
+const url = 'mongodb+srv://ejemplo:ejemplo123@cluster0.miims2z.mongodb.net/?retryWrites=true&w=majority';
 const dbName = 'basededatos';
 
 async function main() {
