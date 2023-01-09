@@ -7,7 +7,7 @@ const app = express();
 const PORT = 8000
 const oneDay = 10000 * 60 * 60 * 24;
 app.use(sessions({
-    secret: "thisismysecrctekeyfhrgfgrfrty84fwir767",
+    secret: "estoesunsecretoanocompartirfhrgfgrfrty84fwir767",
     saveUninitialized:true,
     cookie: { maxAge: oneDay },
     resave: false ,
