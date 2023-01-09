@@ -35,7 +35,7 @@ app.post('/insert', function(req, res) {
   req.session.usuario = req.body.myusername
 
   const client = new MongoClient(url, { useUnifiedTopology: true });
-  const collection = client.db("basededatos").collection("usuarios");
+  const collection = client.db("*******").collection("*******");
   collection.insertOne({
    nombre: req.body.nombre, 
     apellido: req.body.apellido,
@@ -145,7 +145,7 @@ app.get('/user',(req,res) => {
   
 //Astericos
 
-const url = 'mongodb+srv://ejemplo:ejemplo123@cluster0.miims2z.mongodb.net/?retryWrites=true&w=majority';
+const url = 'mongodb+srv://*******:*******@cluster0.miims2z.mongodb.net/?retryWrites=true&w=majority';
 const dbName = 'basededatos';
 
 async function main() {
